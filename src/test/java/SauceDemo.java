@@ -60,9 +60,8 @@ public class SauceDemo {
     public void testProductIsExistInStore() {
 
 
-        // Step 2: Check product availability
 
-        // Get all product elements
+       
         List<WebElement> productElements = driver.findElements(By.cssSelector(".inventory_item_name"));
         String productName="Sauce Labs Backpack";
         // Check if the product is in the list
