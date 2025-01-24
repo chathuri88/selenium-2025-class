@@ -4,16 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class LoginTest {
 
     WebDriver webDriver;
 
-    @BeforeMethod
+    @BeforeClass
     public void openURL() {
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
@@ -23,15 +20,8 @@ public class LoginTest {
     }
 
     @Test
-    public void LoginTestMethod() {
-        //Create a browser instance
-        //webDriver = new ChromeDriver();
-        // webDriver.manage().window().maximize();
+    public void LoginWithValidUsernameValidPassword() {
 
-        // webDriver.get("https://www.saucedemo.com/");
-        //Navigate to the webpage
-
-        //Type username
         webDriver.findElement(By.id("user-name")).sendKeys("standard_user");
 
         //Type password
@@ -44,7 +34,7 @@ public class LoginTest {
 
         Assert.assertEquals(webDriver.findElement(By.cssSelector("[data-test='title']")).getText(), "Products");
 
-        //close the browser
+
     }
 
     @Test
@@ -74,6 +64,7 @@ public class LoginTest {
         Assert.assertEquals(webDriver.findElement(By.cssSelector("h3[data-set=error")).getText(), "Epic sadface: Username is required");
 
     }
+    @Test
 
     public void loginwithinvalidPassword() {
         webDriver.findElement(By.id("user-name")).sendKeys("problem_user");
@@ -81,7 +72,7 @@ public class LoginTest {
         webDriver.findElement(By.id("login-button")).click();
         Assert.assertEquals(webDriver.findElement(By.cssSelector("h3[data-set=error")).getText(), "Epic sadface: Username and password do not match any user in this service");
     }
-
+   @Test
     public void loginwithInvalidUsername() {
         webDriver.findElement(By.id("user-name")).sendKeys("abcd");
         webDriver.findElement(By.id("password")).sendKeys("secret_sauce");
@@ -98,17 +89,17 @@ public class LoginTest {
 
     }
 
-    @DataProvider(name = "login-credentials")
-    public Object[][] userCredentials() {
-        return new Object[][]{
-                {"", "", "Epic sadface: Username is required"},
-                {"", "secret_sauce", "Epic sadface: Username is required"},
-                {"standard_user", "", "Epic sadface: Password is required"},
-                {"standard_user", "invalid", "Epic sadface: Username and password do not match any user in this service"},
-
-        };
-
-    }
+//    @DataProvider(name = "login-credentials")
+//    public Object[][] userCredentials() {
+//        return new Object[][]{
+//                {"", "", "Epic sadface: Username is required"},
+//                {"", "secret_sauce", "Epic sadface: Username is required"},
+//                {"standard_user", "", "Epic sadface: Password is required"},
+//                {"standard_user", "invalid", "Epic sadface: Username and password do not match any user in this service"},
+//
+//        };
+//
+  
 }
 
 
