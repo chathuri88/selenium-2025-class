@@ -39,13 +39,10 @@ public class BaseClass {
     }
 
 
-
-
-
-//    @AfterMethod
-//    public void afterMethod(){
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void afterMethod(){
+       driver.quit();
+   }
 
 
 
