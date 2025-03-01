@@ -2,6 +2,8 @@ package com.pragmatic.selenium;
 
 import org.testng.annotations.DataProvider;
 
+
+
 public class dataProvider {
     @DataProvider(name = "login-credentials")
     public Object[][] userCredentials() {
@@ -12,5 +14,6 @@ public class dataProvider {
                 {"standard_user", "invalid", "Epic sadface: Username and password do not match any user in this service"},
 
         };
+
     }
 }
